@@ -61,10 +61,10 @@ $('#movie-list').on('click','.see-detail', function() {
         type: 'get',
         data: {
             'apikey': '25aa66c9',
-            'i' : $ (this).data('id');
+            'i' : $ (this).data('id')
         },
         success: function (movie) {
-            if (movie.Respose === "True") {
+            if (movie.Response === "True") {
 
                 $('.modal-body').html(`
                     <div class="container-fluid">
@@ -76,6 +76,8 @@ $('#movie-list').on('click','.see-detail', function() {
                             <div class="col-md-8">
                             <ul class="list-group">
                                 <li class="list-group-item"><h3>`+ movie.Tittle +`</h3></li>
+                                <li class="list-group-item">Released : `+ movie.Released +`</li>
+                                <li class="list-group-item">Released : `+ movie.Released +`</li>
                                 </ul>
                             </div>
                         </div>
