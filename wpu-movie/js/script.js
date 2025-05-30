@@ -77,7 +77,9 @@ $('#movie-list').on('click','.see-detail', function() {
                             <ul class="list-group">
                                 <li class="list-group-item"><h3>`+ movie.Tittle +`</h3></li>
                                 <li class="list-group-item">Released : `+ movie.Released +`</li>
-                                <li class="list-group-item">Released : `+ movie.Released +`</li>
+                                <li class="list-group-item">Genre : `+ movie.Genre +`</li>
+                                <li class="list-group-item">Director : `+ movie.Director +`</li>
+                                <li class="list-group-item">Actors : `+ movie.Actors +`</li>
                                 </ul>
                             </div>
                         </div>
