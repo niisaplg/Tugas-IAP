@@ -1,5 +1,6 @@
-$('#search-button'). on('click', function (){
-
+function searchMovie() {
+    $('movie-list').html('');
+    
     $.ajax({
         url: 'http://omdbapi.com',
         type: 'get',
@@ -15,16 +16,18 @@ $('#search-button'). on('click', function (){
                 $.each(movies, function (i, data){
                     $('#movie-list').append(`
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card md-3">
                                 <img src="`+data.Poster +`" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">`+ data.Title +`</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">`+  data.Year +`</h6>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">See Detail</a>
                                 </div>
                                 </div>
                     `);
                 })
+
+                $('#search-input').val('');
 
 
             }else{
@@ -37,4 +40,14 @@ $('#search-button'). on('click', function (){
         }
     });
 
+}
+
+$('#search-button'). on('click', function (){
+    searchMovie();
+});
+
+$('#search-input').on('keyup', function (e) {
+    if (e.which === 13) {
+        searchMovie();
+    }
 });
