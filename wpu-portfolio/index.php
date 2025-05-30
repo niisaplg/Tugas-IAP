@@ -70,12 +70,34 @@
 
 
     <!-- Youtube $ IG -->
-    <selection class="social bg-light" id="social">
+    <selection class="social bg-ligt" id="social">
       <div class="container">
-        <div class="row mb-4">
+        <div class="row pt-4 mb-4">
           <div class="col text-center">
             <h2>Social Media</h2>
           </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="img/profile1.png" widh="200" class="rounded-circle img-thumbnail">
+              </div>
+              <div class="col-md-8">
+            <h5>WebProgramingUIN</h5>
+            <p>70000 Subscribers.</p>
+          </div>
+         </div>
+         <div class="row">
+          <div class="col">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/v=-BmTKA1x?rel=0" title="YouTube video" allowfullscreen></iframe>
+            </div>
+          </div>
+         </div>
+        </div>
+          <div class="col-md-5"></div>
         </div>
       </div>
     </selection>
