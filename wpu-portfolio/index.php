@@ -22,7 +22,7 @@ $subscriber = $result['items'][0]['statistics']['subscriberCount'];
 //latest video
 $urlLatesVidio = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg&channelId=UCkXmLjEr95LVtGuIm3l2dPg&part=snippet&maxResults=1&order=date';
 $result = get_CURL($urlLatesVidio);
-var_dump($result);
+$urlLatesVidioId = $result ['items'][0]['id']['videoId'];
 
 ?>
 
@@ -115,13 +115,16 @@ var_dump($result);
               </div>
           <div class="col-md-8">
             <h5><?= $channelName; ?></h5>
-            <p>7<?= $subscriber; ?></p>
+            <p>7<?= $subscriber; ?> Subscribers.</p>
+              <div class="g-ytsubscribe"
+            data-channelid="UCkXmLjEr95LVtGuIm3l2Pg" data-layout="default"
+            data-count="default"></div>
           </div>
          </div>
          <div class="row mt-3 pb-3">
           <div class="col">
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/v=-BmTKA1xCm8?rel=0" title="YouTube video" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/<?= $latestVideoId;?>rel=0" title="YouTube video" allowfullscreen></iframe>
             </div>
           </div>
          </div>
@@ -304,5 +307,6 @@ var_dump($result);
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
   </body>
 </html>
