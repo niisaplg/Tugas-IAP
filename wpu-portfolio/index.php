@@ -1,3 +1,18 @@
+<?php
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCkXmLjEr95LVtGuIm3l2dPg&key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+$result = curl_exec($curl);
+curl_close($curl);
+
+$result = json_decode ($result, true);
+
+$youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url'];
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -82,22 +97,46 @@
           <div class="col-md-5">
             <div class="row">
               <div class="col-md-4">
-                <img src="img/profile1.png" widh="200" class="rounded-circle img-thumbnail">
+                <img src="<?= $youtubeProfilePic; ?>" widh="200" class="rounded-circle img-thumbnail">
               </div>
-              <div class="col-md-8">
-            <h5>WebProgramingUIN</h5>
+          <div class="col-md-8">
+            <h5>WebProgramingUNPAS</h5>
             <p>70000 Subscribers.</p>
           </div>
          </div>
-         <div class="row">
+         <div class="row mt-3 pb-3">
           <div class="col">
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/v=-BmTKA1x?rel=0" title="YouTube video" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/v=-BmTKA1xCm8?rel=0" title="YouTube video" allowfullscreen></iframe>
             </div>
           </div>
          </div>
         </div>
-          <div class="col-md-5"></div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="img/profile1.png" widh="200" class="rounded-circle img-thumbnail">
+              </div>
+              <div class="col-md-8">
+            <h5>@niisaplg</h5>
+            <p>70000 Followers.</p>
+          </div>
+            </div>
+           
+            <div class="row mt-3 pb-3">
+              <div class="col">
+                <div class="ig-thumbnail">
+                  <img src="img/thumbs/1.png">
+                </div>
+                <div class="ig-thumbnail">
+                  <img src="img/thumbs/2.png">
+                </div>
+                <div class="ig-thumbnail">
+                  <img src="img/thumbs/3.png">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </selection>
