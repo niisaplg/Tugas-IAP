@@ -1,14 +1,28 @@
 <?php
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCkXmLjEr95LVtGuIm3l2dPg&key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg');
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-$result = curl_exec($curl);
-curl_close($curl);
+function get_CURL($url)
+{
 
-$result = json_decode ($result, true);
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  $result = curl_exec($curl);
+  curl_close($curl);
+  
+  return json_decode ($result, true);
+}
+
+$result = get_CURL ('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCkXmLjEr95LVtGuIm3l2dPg&key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg');
+
 
 $youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url'];
+$channelName = $result['items'][0]['snippet']['title'];
+$subscriber = $result['items'][0]['statistics']['subscriberCount'];
 
+
+//latest video
+$urlLatesVidio = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg&channelId=UCkXmLjEr95LVtGuIm3l2dPg&part=snippet&maxResults=1&order=date';
+$result = get_CURL($urlLatesVidio);
+var_dump($result);
 
 ?>
 
@@ -100,8 +114,8 @@ $youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url
                 <img src="<?= $youtubeProfilePic; ?>" widh="200" class="rounded-circle img-thumbnail">
               </div>
           <div class="col-md-8">
-            <h5>WebProgramingUNPAS</h5>
-            <p>70000 Subscribers.</p>
+            <h5><?= $channelName; ?></h5>
+            <p>7<?= $subscriber; ?></p>
           </div>
          </div>
          <div class="row mt-3 pb-3">
