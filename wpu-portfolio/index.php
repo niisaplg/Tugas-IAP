@@ -20,19 +20,25 @@ $subscriber = $result['items'][0]['statistics']['subscriberCount'];
 
 
 //latest video
-$urlLatesVidio = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg&channelId=UCkXmLjEr95LVtGuIm3l2dPg&part=snippet&maxResults=1&order=date';
-$result = get_CURL($urlLatesVidio);
-$urlLatesVidioId = $result ['items'][0]['id']['videoId'];
+$urlLatestVideo = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAFq0dBYRc54ofkVFgvX8OUS547x4vibNg&channelId=UCkXmLjEr95LVtGuIm3l2dPg&part=snippet&maxResults=1&order=date&part=snippet';
+$result = get_CURL($urlLatestVideo);
+$latestVideoId = $result ['items'][0]['id']['videoId'];
 
 //istagram API
 $clientId = '17841465946423073';
 $accessToken = 'IGAAaktGVHH4hBZAE05UHBzd21sY1ptRkRlWDVoeXZAOLUZAwR3BtTWVndE9vRjlsUWpBenRIbHJtcWkzeDRTYTdxODZACTVptMmV6WFBadnYxVE9lZA3ZALdmVSM0xSLS1UakkyZAVlHLVlCWTdCUFNSZAmljRVdpTjhDNHMtMTAxakFzTQZDZD';
-$result = get_CURL ('https://graph.instagram.com/v22.0/me?fields=username,profile_picture_url,followers_count&access_token=IGAAaktGVHH4hBZAE05UHBzd21sY1ptRkRlWDVoeXZAOLUZAwR3BtTWVndE9vRjlsUWpBenRIbHJtcWkzeDRTYTdxODZACTVptMmV6WFBadnYxVE9lZA3ZALdmVSM0xSLS1UakkyZAVlHLVlCWTdCUFNSZAmljRVdpTjhDNHMtMTAxakFzTQZDZD'); 
-$usernameIG = $result ['username'];
-$profilePictureIG = $result ['profile_picture_url'];
-$followersIG = $result ['followers_count'];
 
+$result2 = get_CURL ('https://graph.instagram.com/v22.0/me?fields=username,profile_picture_url,followers_count&access_token=IGAAaktGVHH4hBZAE05UHBzd21sY1ptRkRlWDVoeXZAOLUZAwR3BtTWVndE9vRjlsUWpBenRIbHJtcWkzeDRTYTdxODZACTVptMmV6WFBadnYxVE9lZA3ZALdmVSM0xSLS1UakkyZAVlHLVlCWTdCUFNSZAmljRVdpTjhDNHMtMTAxakFzTQZDZD'); 
+$usernameIG = $result2 ['username'];
+$profilePictureIG = $result2 ['profile_picture_url'];
+$followersIG = $result2 ['followers_count'];
 
+// media ig
+$resultGambar1 = get_Curl("https://graph.instagram.com/v22.0/18067277519000632?fields=media_url&access_token=$accessToken");
+$resultGambar2 = get_Curl("https://graph.instagram.com/v22.0/18057924755185006?fields=media_url&access_token=$accessToken");
+
+$gambar1 = $resultGambar1['media_url'];
+$gambar2 = $resultGambar2['media_url'];
 
 ?>
 
@@ -127,14 +133,15 @@ $followersIG = $result ['followers_count'];
             <h5><?= $channelName; ?></h5>
             <p>7<?= $subscriber; ?> Subscribers.</p>
               <div class="g-ytsubscribe"
-            data-channelid="UCkXmLjEr95LVtGuIm3l2Pg" data-layout="default"
+            data-channelid="UCkXmLjEr95LVtGuIm3l2dPg" data-layout="default"
             data-count="default"></div>
           </div>
          </div>
          <div class="row mt-3 pb-3">
           <div class="col">
-            <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/<?= $latestVideoId;?>rel=0" title="YouTube video" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class= "embed-responsive-item"
+              src="https://www.youtube.com/embed/<?= $latestVideoId;?>" allowfullscreen></iframe>
             </div>
           </div>
          </div>
@@ -142,7 +149,7 @@ $followersIG = $result ['followers_count'];
           <div class="col-md-5">
             <div class="row">
               <div class="col-md-4">
-                <img src="<?= $profilepictureIG;?>" widh="200" class="rounded-circle img-thumbnail">
+                <img src="<?= $profilePictureIG;?>" widh="200" class="rounded-circle img-thumbnail">
               </div>
               <div class="col-md-8">
             <h5><?= $usernameIG;?></h5>
@@ -153,13 +160,10 @@ $followersIG = $result ['followers_count'];
             <div class="row mt-3 pb-3">
               <div class="col">
                 <div class="ig-thumbnail">
-                  <img src="img/thumbs/1.png">
+                  <img src="<?= $gambar1; ?>">
                 </div>
                 <div class="ig-thumbnail">
-                  <img src="img/thumbs/2.png">
-                </div>
-                <div class="ig-thumbnail">
-                  <img src="img/thumbs/3.png">
+                  <img src="<?= $gambar2; ?>">
                 </div>
               </div>
             </div>
