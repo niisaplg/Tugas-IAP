@@ -24,6 +24,16 @@ $urlLatesVidio = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAFq0dBY
 $result = get_CURL($urlLatesVidio);
 $urlLatesVidioId = $result ['items'][0]['id']['videoId'];
 
+//istagram API
+$clientId = '17841465946423073';
+$accessToken = 'IGAAaktGVHH4hBZAE05UHBzd21sY1ptRkRlWDVoeXZAOLUZAwR3BtTWVndE9vRjlsUWpBenRIbHJtcWkzeDRTYTdxODZACTVptMmV6WFBadnYxVE9lZA3ZALdmVSM0xSLS1UakkyZAVlHLVlCWTdCUFNSZAmljRVdpTjhDNHMtMTAxakFzTQZDZD';
+$result = get_CURL ('https://graph.instagram.com/v22.0/me?fields=username,profile_picture_url,followers_count&access_token=IGAAaktGVHH4hBZAE05UHBzd21sY1ptRkRlWDVoeXZAOLUZAwR3BtTWVndE9vRjlsUWpBenRIbHJtcWkzeDRTYTdxODZACTVptMmV6WFBadnYxVE9lZA3ZALdmVSM0xSLS1UakkyZAVlHLVlCWTdCUFNSZAmljRVdpTjhDNHMtMTAxakFzTQZDZD'); 
+$usernameIG = $result ['username'];
+$profilePictureIG = $result ['profile_picture_url'];
+$followersIG = $result ['followers_count'];
+
+
+
 ?>
 
 
@@ -46,7 +56,7 @@ $urlLatesVidioId = $result ['items'][0]['id']['videoId'];
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#home">Sandhika Galih</a>
+        <a class="navbar-brand" href="#home">REST API</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,9 +80,9 @@ $urlLatesVidioId = $result ['items'][0]['id']['videoId'];
     <div class="jumbotron" id="home">
       <div class="container">
         <div class="text-center">
-          <img src="img/profile1.png" class="rounded-circle img-thumbnail">
-          <h1 class="display-4">Sandhika Galih</h1>
-          <h3 class="lead">Lecturer | Programmer | Youtuber</h3>
+          <img src="img/profile2.png" class="rounded-circle img-thumbnail">
+          <h1 class="display-4">Khoirunnisa Pulungan</h1>
+          <h3 class="lead">Student | Programmer | Youtuber</h3>
         </div>
       </div>
     </div>
@@ -132,11 +142,11 @@ $urlLatesVidioId = $result ['items'][0]['id']['videoId'];
           <div class="col-md-5">
             <div class="row">
               <div class="col-md-4">
-                <img src="img/profile1.png" widh="200" class="rounded-circle img-thumbnail">
+                <img src="<?= $profilepictureIG;?>" widh="200" class="rounded-circle img-thumbnail">
               </div>
               <div class="col-md-8">
-            <h5>@niisaplg</h5>
-            <p>70000 Followers.</p>
+            <h5><?= $usernameIG;?></h5>
+            <p><?= $followersIG; ?></p>
           </div>
             </div>
            
